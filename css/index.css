@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+
+main {
+  font-family: "IBM Plex Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 40px;
+  color: #4520ab;
+  font-weight: 600;
+  margin: 0;
+  margin-top: 44px;
+}
+
+form {
+  margin-top: 86px;
+  position: relative;
+}
+
+#input {
+  width: 473px;
+  height: 50px;
+  border-radius: 14px;
+  border: 2px solid var(--bg-black, #111);
+  padding-left: 21px;
+}
+
+input::-webkit-input-placeholder {
+  color: var(--bg-black, #111);
+  opacity: 0.4;
+  font-family: IBM Plex Mono;
+  font-size: 18px;
+  letter-spacing: -0.9px;
+}
+
+#btn-add {
+  display: inline-flex;
+  height: 38.08px;
+  width: 107px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  background: var(--bg-black, #111);
+  position: absolute;
+  right: 8px;
+  top: 8.96px;
+  border: 0;
+}
+
+.list {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-row:last-child {
+  border-bottom: none;
+}
+
+.list-row:first-child {
+  border-bottom: 1px solid black;
+}
+
+.list-row:last-child .list-row-left {
+  border-radius: 0px 0px 0px 8px;
+}
+
+.list-row:first-child .list-row-left {
+  border-radius: 8px 0px 0px 0px;
+}
+
+.list-row:last-child .list-row-right {
+  border-radius: 0px 0px 8px 0px;
+}
+
+.list-row:first-child .list-row-right {
+  border-radius: 0px 8px 0px 0px;
+}
+
+.list-row {
+  display: flex;
+  width: 500px;
+  border-bottom: 1px solid black;
+  position: relative;
+}
+
+.list-row-left,
+.list-row-right {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 250px;
+}
+
+.list-row-left {
+  background: #f0f0f0;
+  border-right: 1px solid black;
+}
+
+.number {
+  margin-left: 12px;
+}
+
+.list-row-right {
+  background: #d8d8d8;
+  border-left: 1px solid black;
+  justify-content: space-between;
+}
+
+.first-left {
+  border-radius: 8px 0px 0px 0px;
+}
+
+.first-right {
+  border-radius: 0px 8px 0px 0px;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
+  padding: 8px 16px 10px 16px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.1);
+  bottom: 34px;
+  text-align: center;
+}
+
+.hidden p {
+  margin: 0;
+}
+
+.hidden-right {
+  margin-left: 11px;
+}
+
+.hidden-left {
+  margin-left: 33px;
+}
+
+.hover:hover + .hidden {
+  display: block;
+}
+
+.list-row-text {
+  margin-left: 28px;
+}
+
+#btn-clear-all {
+  margin-top: 60px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 8px;
+  border: 0;
+  width: 176px;
+  height: 36px;
+  background: #adadad;
+  font-size: 18px;
+}
+
+.list-row-btn {
+  height: 18px;
+  width: 18px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  margin-right: 11px;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./index.js" defer></script>
+    <title>Транслит</title>
+  </head>
+  <body>
+    <main>
+      <h1>T.R.A.N.S.L.I.T.</h1>
+      <form onkeypress="return event.keyCode != 13">
+        <input id="input" type="text" placeholder="Начните вводить текст" />
+        <button id="btn-add" type="button">Добавить</button>
+      </form>
+      <div class="list">
+        <div class="list-row">
+          <div class="list-row-left first-left">
+            <div class="number">1</div>
+            <p class="list-row-text">Привет 👋🏻</p>
+          </div>
+          <div class="list-row-right first-right">
+            <p class="list-row-text">Privet</p>
+            <button class="list-row-btn">
+              <img src="/icons/Group 1.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <button id="btn-clear-all">
+        <img src="/icons/Group 7.svg" alt="" />
+        <p>Очистить всё</p>
+      </button>
+    </main>
+  </body>
+</html>
