@@ -1,122 +1,117 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable spaced-comment */
-let btnAdd = document.querySelector("#btn-add");
-let list = document.querySelector(".list");
-let input = document.querySelector("#input");
-let test = document.querySelector(".list-row-left");
+const btnAdd = document.querySelector("#btn-add");
+const list = document.querySelector(".list");
+const input = document.querySelector("#input");
+const test = document.querySelector(".list-row-left");
 
 btnAdd.addEventListener("click", () => {
-  let divListRow = document.createElement("div");
-  let divListRowLeft = document.createElement("div");
-  let divListRowRight = document.createElement("div");
+  if (input.value !== "") {
+    const divListRow = document.createElement("div");
+    const divListRowLeft = document.createElement("div");
+    const divListRowRight = document.createElement("div");
 
-  divListRow.className = "list-row list-row-delete";
-  divListRowLeft.className = "list-row-left";
-  divListRowRight.className = "list-row-right";
+    divListRow.className = "list-row list-row-delete";
+    divListRowLeft.className = "list-row-left";
+    divListRowRight.className = "list-row-right";
 
-  divListRow.appendChild(divListRowLeft);
-  divListRow.appendChild(divListRowRight);
+    divListRow.appendChild(divListRowLeft);
+    divListRow.appendChild(divListRowRight);
 
-  let listRowText = document.createElement("p");
-  listRowText.className = "list-row-text";
-  listRowText.innerText = input.value;
-
-  if (listRowText.innerText.length > 7) {
-    listRowText.innerText = listRowText.innerText.substring(0, 7) + "...";
-
-    let listRowHiddenText = document.createElement("p");
+    let listRowText = document.createElement("p");
     listRowText.className = "list-row-text hover";
-    listRowHiddenText.innerText = input.value;
+    listRowText.innerText = input.value;
 
-    let listRowHiddenDiv = document.createElement("div");
-    listRowHiddenDiv.className = "hidden hidden-left";
-    listRowHiddenDiv.appendChild(listRowHiddenText);
+    if (listRowText.innerText.length > 7) {
+      listRowText.innerText = listRowText.innerText.substring(0, 7) + "...";
 
-    divListRowLeft.appendChild(listRowHiddenDiv);
-  }
-  console.log(listRowText.innerText.slice(0, 7) + "...");
+      let listRowHiddenText = document.createElement("p");
+      listRowHiddenText.className = "list-row-text";
+      listRowHiddenText.innerText = input.value;
 
-  let listRowTranslitedText = document.createElement("p");
-  listRowTranslitedText.className = "list-row-text";
-  listRowTranslitedText.innerText = translit(input.value);
+      let listRowHiddenDiv = document.createElement("div");
+      listRowHiddenDiv.className = "hidden hidden-left";
+      listRowHiddenDiv.appendChild(listRowHiddenText);
 
-  if (listRowTranslitedText.innerText.length > 7) {
-    listRowTranslitedText.innerText = translit(
-      listRowTranslitedText.innerText.substring(0, 7) + "..."
-    );
+      divListRowLeft.appendChild(listRowHiddenDiv);
+    }
 
-    let listRowHiddenTranslitedText = document.createElement("p");
+    let listRowTranslitedText = document.createElement("p");
     listRowTranslitedText.className = "list-row-text hover";
-    listRowHiddenTranslitedText.innerText = translit(input.value);
+    listRowTranslitedText.innerText = translit(input.value);
 
-    let listRowHiddenTranslitedDiv = document.createElement("div");
-    listRowHiddenTranslitedDiv.className = "hidden hidden-right";
-    listRowHiddenTranslitedDiv.appendChild(listRowHiddenTranslitedText);
+    if (listRowTranslitedText.innerText.length > 7) {
+      listRowTranslitedText.innerText = translit(
+        listRowTranslitedText.innerText.substring(0, 7) + "..."
+      );
 
-    divListRowRight.appendChild(listRowHiddenTranslitedDiv);
-  }
+      let listRowHiddenTranslitedText = document.createElement("p");
+      listRowHiddenTranslitedText.className = "list-row-text";
+      listRowHiddenTranslitedText.innerText = translit(input.value);
 
-  let btnClear = document.createElement("button");
-  let imgBtn = document.createElement("img");
+      let listRowHiddenTranslitedDiv = document.createElement("div");
+      listRowHiddenTranslitedDiv.className = "hidden hidden-right";
+      listRowHiddenTranslitedDiv.appendChild(listRowHiddenTranslitedText);
 
-  btnClear.className = "list-row-btn";
-  imgBtn.src = "/icons/Group 1.svg";
+      divListRowRight.appendChild(listRowHiddenTranslitedDiv);
+    }
 
-  btnClear.appendChild(imgBtn);
+    let btnClear = document.createElement("button");
+    let imgBtn = document.createElement("img");
 
-  let number = document.createElement("div");
-  number.className = "number";
-  divListRowLeft.insertBefore(number, divListRowLeft.firstChild);
+    btnClear.className = "list-row-btn";
+    imgBtn.src = "/icons/Group 1.svg";
 
-  divListRowLeft.insertBefore(listRowText, divListRowLeft.children[1]);
-  divListRowRight.insertBefore(
-    listRowTranslitedText,
-    divListRowRight.firstChild
-  );
-  divListRowRight.appendChild(btnClear);
+    btnClear.appendChild(imgBtn);
 
-  list.appendChild(divListRow);
+    let number = document.createElement("div");
+    number.className = "number";
+    divListRowLeft.insertBefore(number, divListRowLeft.firstChild);
 
-  btnClear.addEventListener("click", () => {
-    btnClear.parentNode.parentNode.parentNode.removeChild(
-      btnClear.parentNode.parentNode
+    divListRowLeft.insertBefore(listRowText, divListRowLeft.children[1]);
+    divListRowRight.insertBefore(
+      listRowTranslitedText,
+      divListRowRight.firstChild
     );
+    divListRowRight.appendChild(btnClear);
+
+    list.appendChild(divListRow);
+
+    btnClear.addEventListener("click", () => {
+      btnClear.parentNode.parentNode.parentNode.removeChild(
+        btnClear.parentNode.parentNode
+      );
+
+      let left = document.querySelectorAll(".list-row-left");
+      left.forEach((item, index) => {
+        item.querySelector(".number").textContent = index + 1;
+      });
+    });
+
+    let btnClearAll = document.querySelector("#btn-clear-all");
+    btnClearAll.addEventListener("click", () => {
+      document
+        .querySelectorAll(".list-row-delete")
+        .forEach((e) => e.parentNode.removeChild(e));
+    });
 
     let left = document.querySelectorAll(".list-row-left");
     left.forEach((item, index) => {
       item.querySelector(".number").textContent = index + 1;
     });
-  });
-
-  let btnClearAll = document.querySelector("#btn-clear-all");
-  btnClearAll.addEventListener("click", () => {
-    document
-      .querySelectorAll(".list-row-delete")
-      .forEach((e) => e.parentNode.removeChild(e));
-  });
-
-  let left = document.querySelectorAll(".list-row-left");
-  left.forEach((item, index) => {
-    item.querySelector(".number").textContent = index + 1;
-  });
-
+  }
   input.value = "";
 });
 
 input.addEventListener("keyup", (event) => {
   if (event.key !== "Enter") return;
   btnAdd.click();
-  event.preventDefault();
-  if (input.value) {
-    try {
-      input.value = "";
-    } catch (err) {}
-  }
+  input.value = "";
 });
 
 function translit(word) {
-  var answer = "";
-  var converter = {
+  let translited = "";
+  const simbolArr = {
     а: "a",
     б: "b",
     в: "v",
@@ -150,7 +145,6 @@ function translit(word) {
     э: "e",
     ю: "yu",
     я: "ya",
-
     А: "A",
     Б: "B",
     В: "V",
@@ -186,13 +180,12 @@ function translit(word) {
     Я: "Ya",
   };
 
-  for (var i = 0; i < word.length; ++i) {
-    if (converter[word[i]] == undefined) {
-      answer += word[i];
+  for (let i = 0; i < word.length; i++) {
+    if (simbolArr[word[i]] === undefined) {
+      translited += word[i];
     } else {
-      answer += converter[word[i]];
+      translited += simbolArr[word[i]];
     }
   }
-
-  return answer;
+  return translited;
 }
